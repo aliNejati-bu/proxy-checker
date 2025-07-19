@@ -11,12 +11,9 @@ services:
       - MONGO_URI=mongodb://mongo:27017/proxy
       - IS_NEW=false
       - TEST_CONCURRENCY=25
-    depends_on:
-      - mongo
     networks:
       - shared-net
 
-# ❌ حذف کامل سرویس mongo (چون به صورت جدا اجرا میشه)
 
 networks:
   shared-net:
