@@ -16,7 +16,7 @@ data.forEach((item) => {
 });
 fs.writeFileSync("./src.json", JSON.stringify(pr));*/
 process.on("uncaughtException", (err) => {
-    console.error("Uncaught Exception:", err.message);
+    //console.error("Uncaught Exception:", err.message);
 });
 
 process.on("unhandledRejection", (reason) => {
@@ -64,6 +64,7 @@ mongoose.connect(process.env.MONGO_URI).then(async () => {
     }
     if (process.argv[2] === "testAll") {
         while (true) {
+
             const proxies = await getConfigsToTest(500);
             await testProxies(proxies);
         }
@@ -92,9 +93,9 @@ async function testProxies(proxies) {
                 proxy.tries = -1;
             }
             // تست کانفیگ
-            let st = Date.now();
+            //let st = Date.now();
             const testResult = await testProxy(proxy.type, proxy.ip, proxy.port);
-            logger(Date.now() - st);
+            //logger(Date.now() - st);
 
             // اگر کانفیگ متصل شد، connectionStatus را true می‌کنیم و lastModifiedAt را آپدیت می‌کنیم
             if (testResult) {

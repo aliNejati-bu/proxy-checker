@@ -3,6 +3,7 @@ const {HttpsProxyAgent} = require("https-proxy-agent");
 const {SocksProxyAgent} = require("socks-proxy-agent");
 const {logger} = require("./utils/logger");
 const {ProxyModel} = require("./DB/ProxyModel");
+const {HttpProxyAgent} = require("http-proxy-agent");
 const testUrl = "https://t.me";
 
 /**
@@ -18,20 +19,28 @@ async function testProxy(type, ip, port) {
     try {
         if (type.startsWith("socks")) {
             agent = new SocksProxyAgent(proxyUrl);
-        } else if (type === "http" || type === "https") {
-            agent = new HttpsProxyAgent(proxyUrl);
-        } else {
-            logger(`[❌] Unknown proxy type: ${type}`);
-            return false;
+        } else if (type === "http") {
+            agent = new HttpProxyAgent(proxyUrl); // ✅ درست برای پراکسی HTTP
+        } else if (type === "https") {
+            agent = new HttpsProxyAgent({
+                host: ip,
+                port: port,
+                protocol: "https:",
+                rejectUnauthorized: false, // غیرفعال کردن چک SSL
+            });
         }
 
-        const response = await axios.get(testUrl, {
-            httpsAgent: agent,
-            httpAgent: agent,
-            timeout: 9000,
-        });
+        // استفاده از Promise.race برای اطمینان از قطع شدن بعد از ۹ ثانیه
+        await Promise.race([
+            axios.get(testUrl, {
+                httpsAgent: agent,
+                httpAgent: agent,
+                timeout: 30000,
+            }),
+            new Promise((_, reject) => setTimeout(() => reject(new Error("Global timeout")), 30000))
+        ]);
 
-        logger(`[✅] ${type.toUpperCase()} ${ip}:${port} is working. IP: ${response.data.ip}`);
+        logger(`[✅] ${type.toUpperCase()} ${ip}:${port} is working.`);
         return true;
     } catch (err) {
         //logger(`[❌] ${type.toUpperCase()} ${ip}:${port} failed: ${err.message}`);
@@ -97,12 +106,21 @@ async function saveProxyToDB(proxyAddress) {
 
 
 function getConfigsToTest(limit = 100) {
+    const sortEnv = process.env.IS_NEW;
+    let newVal = 1;
+    if (sortEnv == 'true') {
+        newVal = -1;
+    }
+    console.log({
+        tries: 1,        // اولویت با tries کمتر
+        createdAt: newVal     // در صورت برابر بودن، اولویت با قدیمی‌ترها
+    })
     return ProxyModel.find({
         isConnected: false,
     })
         .sort({
             tries: 1,        // اولویت با tries کمتر
-            createdAt: 1     // در صورت برابر بودن، اولویت با قدیمی‌ترها
+            createdAt: newVal     // در صورت برابر بودن، اولویت با قدیمی‌ترها
         })
         .limit(limit);
 }
