@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>پنل مدیریت کانفیگ‌ها</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+            background: linear-gradient(135deg, #e3f0ff 0%, #f9f9f9 100%);
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px #1976d220, 0 1.5px 8px #1976d210;
+            padding: 38px 38px 28px 38px;
+            border: 1.5px solid #e3eaf7;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #1976d2;
+            letter-spacing: 1px;
+        }
+
+        #stats, #sysinfo {
+            display: flex;
+            justify-content: center;
+            gap: 38px;
+            margin-bottom: 18px;
+        }
+
+        #stats span, #sysinfo span {
+            font-size: 1.13em;
+            color: #333;
+            background: #f3f7fb;
+            border-radius: 7px;
+            padding: 4px 16px;
+            box-shadow: 0 1px 4px #1976d210;
+        }
+
+        .form-row {
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        label {
+            min-width: 110px;
+            font-weight: 500;
+            color: #1976d2;
+        }
+
+        input, select {
+            padding: 8px 13px;
+            border-radius: 7px;
+            border: 1.5px solid #b6c7e3;
+            font-size: 1em;
+            background: #f7faff;
+            transition: border 0.2s;
+        }
+
+        input:focus, select:focus {
+            border: 1.5px solid #1976d2;
+            outline: none;
+            background: #fff;
+        }
+
+        button {
+            background: linear-gradient(90deg, #1976d2 60%, #42a5f5 100%);
+            color: #fff;
+            border: none;
+            padding: 11px 32px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 1.08em;
+            font-weight: 700;
+            box-shadow: 0 2px 8px #1976d220;
+            transition: background 0.18s, box-shadow 0.18s;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #125ea2 60%, #1976d2 100%);
+            box-shadow: 0 4px 16px #1976d230;
+        }
+
+        #log {
+            background: #181c24;
+            color: #b6ffb6;
+            font-family: 'Fira Mono', monospace;
+            padding: 16px;
+            border-radius: 10px;
+            height: 230px;
+            overflow-y: auto;
+            margin-top: 18px;
+            font-size: 0.92em;
+            box-shadow: 0 1.5px 8px #1976d210;
+            border: 1.5px solid #e3eaf7;
+        }
+
+        #runningCmds {
+            margin: 28px 0 10px 0;
+        }
+
+        .cmd-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cmd-item {
+            background: linear-gradient(90deg, #f7faff 80%, #e3f0ff 100%);
+            border: 1.5px solid #e3eaf7;
+            border-radius: 7px;
+            margin-bottom: 8px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 4px #1976d210;
+            font-size: 1.01em;
+        }
+
+        .cmd-item span {
+            font-family: 'Fira Mono', monospace;
+            color: #1976d2;
+        }
+
+        .cmd-item button {
+            background: linear-gradient(90deg, #e53935 60%, #ff7043 100%);
+            color: #fff;
+            padding: 5px 18px;
+            font-size: 0.98em;
+            border-radius: 5px;
+            margin-left: 10px;
+            font-weight: 700;
+            border: none;
+            box-shadow: 0 1px 4px #e5393520;
+            transition: background 0.18s, box-shadow 0.18s;
+        }
+
+        .cmd-item button:hover {
+            background: linear-gradient(90deg, #b71c1c 60%, #e53935 100%);
+            box-shadow: 0 2px 8px #e5393530;
+        }
+
+        #logSelect {
+            padding: 7px 13px;
+            border-radius: 7px;
+            border: 1.5px solid #b6c7e3;
+            font-size: 1em;
+            background: #f7faff;
+            margin-right: 8px;
+            min-width: 120px;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 10px;
+            }
+
+            #stats, #sysinfo {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .form-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>پنل مدیریت کانفیگ‌ها</h1>
+    <div id="adminActiveConfig"
+         style="margin-bottom:32px; background:#f7faff; border-radius:10px; box-shadow:0 1px 8px #1976d210; padding:18px 18px 10px 18px; border:1.5px solid #e3eaf7;">
+        <h3 style="color:#1976d2; margin-top:0;">مدیریت پراکسی فعال (activeConfig)</h3>
+        <form id="activeConfigForm">
+            <div class="form-row">
+                <label for="activeConfigContent">مقدار:</label>
+                <textarea id="activeConfigContent" name="activeConfigContent" rows="3"
+                          style="width:100%;font-family:monospace;font-size:0.98em;"></textarea>
+                <button type="button" id="loadActiveConfig">نمایش مقدار فعلی</button>
+            </div>
+            <button type="submit">ذخیره مقدار جدید</button>
+            <span id="activeConfigMsg" style="margin-right:16px;color:#1976d2;"></span>
+        </form>
+    </div>
+    <div id="adminSubsConfig"
+         style="margin-bottom:32px; background:#f7faff; border-radius:10px; box-shadow:0 1px 8px #1976d210; padding:18px 18px 10px 18px; border:1.5px solid #e3eaf7;">
+        <h3 style="color:#1976d2; margin-top:0;">مدیریت لیست سابس (subs.json)</h3>
+        <form id="subsConfigForm">
+            <div class="form-row">
+                <label for="subsConfigContent">مقدار:</label>
+                <textarea id="subsConfigContent" name="subsConfigContent" rows="6"
+                          style="width:100%;font-family:monospace;font-size:0.98em;"></textarea>
+                <button type="button" id="loadSubsConfig">نمایش مقدار فعلی</button>
+            </div>
+            <button type="submit">ذخیره مقدار جدید</button>
+            <span id="subsConfigMsg" style="margin-right:16px;color:#1976d2;"></span>
+        </form>
+    </div>
+    <div id="adminSubsb64Config"
+         style="margin-bottom:32px; background:#f7faff; border-radius:10px; box-shadow:0 1px 8px #1976d210; padding:18px 18px 10px 18px; border:1.5px solid #e3eaf7;">
+        <h3 style="color:#1976d2; margin-top:0;">مدیریت لیست سابس بیس۶۴ (subsb64.json)</h3>
+        <form id="subsb64ConfigForm">
+            <div class="form-row">
+                <label for="subsb64ConfigContent">مقدار:</label>
+                <textarea id="subsb64ConfigContent" name="subsb64ConfigContent" rows="6"
+                          style="width:100%;font-family:monospace;font-size:0.98em;"></textarea>
+                <button type="button" id="loadSubsb64Config">نمایش مقدار فعلی</button>
+            </div>
+            <button type="submit">ذخیره مقدار جدید</button>
+            <span id="subsb64ConfigMsg" style="margin-right:16px;color:#1976d2;"></span>
+        </form>
+    </div>
+    <div id="stats">
+        <span>تعداد کل کانفیگ‌ها: <b id="totalConfigs">?</b></span>
+        <span>تعداد متصل: <b id="connectedConfigs">?</b></span>
+    </div>
+    <div id="sysinfo">
+        <span>مصرف RAM: <b id="ramUsage">?</b></span>
+        <span>مصرف CPU: <b id="cpuUsage">?</b></span>
+    </div>
+    <form id="commandForm" style="margin-bottom:0;">
+        <div class="form-row">
+            <label for="operator">اپراتور (اختیاری):</label>
+            <input type="text" id="operator" name="operator" placeholder="مثلاً mci یا irancell یا ...">
+        </div>
+        <div class="form-row">
+            <label for="command">دستور:</label>
+            <select id="command" name="command">
+                <option value="add">افزودن کانفیگ‌ها (add)</option>
+                <option value="test">تست کانفیگ‌ها (test)</option>
+                <option value="createfile">خروجی کانفیگ‌های متصل (createfile)</option>
+                <option value="testConnected">تست کانفیگ‌های متصل (testConnected)</option>
+                <option value="telegram">دریافت از تلگرام (telegram)</option>
+                <option value="testOLD">تست کانفیگ‌های قدیمی (testOLD)</option>
+                <option value="testAll">تست همه کانفیگ‌ها (testAll)</option>
+                <option value="disconnect">قطع همه کانفیگ‌ها (disconnect)</option>
+                <option value="export">خروجی گرفتن از همه کانفیگ‌ها (export)</option>
+                <option value="import">ورود کانفیگ‌ها از فایل (import)</option>
+                <option value="prod-advanced">پاک‌سازی پیشرفته (production)</option>
+                <option value="location">استخراج لوکیشن (location)</option>
+            </select>
+        </div>
+        <div class="form-row" id="importFileRow" style="display:none;">
+            <label for="importFilePath">مسیر فایل ورودی:</label>
+            <input type="text" id="importFilePath" name="importFilePath" placeholder="مثلاً ./export.txt">
+        </div>
+        <button type="submit">اجرا</button>
+    </form>
+    <div id="runningCmds">
+        <h3 style="margin:18px 0 7px 0;">دستورات در حال اجرا:</h3>
+        <ul class="cmd-list" id="cmdList"></ul>
+        <div style="margin-top:10px;">
+            <label for="logSelect">نمایش لاگ دستور:</label>
+            <select id="logSelect"></select>
+        </div>
+    </div>
+    <div id="log"></div>
+    <div id="cleanupPanel"
+         style="margin-bottom:32px; background:#f7faff; border-radius:10px; box-shadow:0 1px 8px #1976d210; padding:18px 18px 10px 18px; border:1.5px solid #e3eaf7;">
+        <h3 style="color:#1976d2; margin-top:0;">داشبورد کلین‌آپ دیتابیس</h3>
+        <div id="cleanupStatsBox" style="margin-bottom:18px;display:none;">
+            <b>آمار:</b>
+            <span id="cleanupStats"></span>
+            <button id="runSimpleCleanup" style="margin-right:16px;">پاک‌سازی ساده</button>
+        </div>
+        <div id="advancedCleanupBox" style="margin-bottom:18px;display:none;">
+            <form id="advancedCleanupForm">
+                <b>پاک‌سازی پیشرفته:</b>
+                <div class="form-row">
+                    <label>روز:</label>
+                    <input type="number" id="advDays" value="2" min="1" style="max-width:80px;">
+                    <label>حداکثر تست:</label>
+                    <input type="number" id="advTests" value="10" min="1" style="max-width:80px;">
+                    <label><input type="checkbox" id="advDryRun"> حالت تست (dry-run)</label>
+                    <label><input type="checkbox" id="advMoveConnected"> انتقال متصل‌ها</label>
+                    <button type="submit">پاک‌سازی پیشرفته</button>
+                </div>
+            </form>
+        </div>
+        <div id="cleanupTrashBox" style="display:none;">
+            <b>سطل زباله:</b>
+            <table id="trashTable"
+                   style="width:100%;margin-top:8px;font-size:0.97em;background:#fff;border-radius:7px;overflow:hidden;">
+                <thead>
+                <tr style="background:#e3eaf7;">
+                    <th>URI</th>
+                    <th>نوع</th>
+                    <th>تاریخ</th>
+                    <th>عملیات</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button id="restoreSelected" style="margin-top:8px;">بازگردانی انتخاب‌شده‌ها</button>
+            <button id="deleteSelected" style="margin-top:8px;background:#e53935;">حذف دائمی انتخاب‌شده‌ها</button>
+            <span id="cleanupMsg" style="margin-right:16px;color:#1976d2;"></span>
+        </div>
+    </div>
+</div>
+<script src="app.js"></script>
+<script>
+    // نمایش فیلد import فقط برای دستور import
+    const commandSelect = document.getElementById('command');
+    const importFileRow = document.getElementById('importFileRow');
+    commandSelect.addEventListener('change', () => {
+        importFileRow.style.display = commandSelect.value === 'import' ? '' : 'none';
+    });
+</script>
+</body>
+</html> 

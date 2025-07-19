@@ -1,0 +1,25 @@
+{
+  "name": "admin-panel",
+  "version": "1.0.0",
+  "description": "پنل مدیریت تحت وب برای ابزار پاک‌سازی کانکشن‌ها",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "add": "node ../index.js add",
+    "test": "node ../index.js test",
+    "createfile": "node ../index.js createfile",
+    "testConnected": "node ../index.js testConnected",
+    "telegram": "node ../index.js telegram",
+    "testOLD": "node ../index.js testOLD",
+    "testAll": "node ../index.js testAll",
+    "disconnect": "node ../index.js disconnect",
+    "export": "node ../index.js export",
+    "import": "node ../index.js import"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "ws": "^8.15.1"
+  }
+} 
