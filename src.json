@@ -1,0 +1,614 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/claude89757/free_https_proxies/refs/heads/main/isz_https_proxies.txt",
+    "type": "https"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/databay-labs/free-proxy-list/refs/heads/master/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/databay-labs/free-proxy-list/refs/heads/master/https.txt",
+    "type": "https"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/databay-labs/free-proxy-list/refs/heads/master/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ebrasha/abdal-proxy-hub/refs/heads/main/http-proxy-list-by-EbraSha.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ebrasha/abdal-proxy-hub/refs/heads/main/https-proxy-list-by-EbraSha.txt",
+    "type": "https"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ebrasha/abdal-proxy-hub/refs/heads/main/https-proxy-list-by-EbraSha.txt",
+    "type": "https"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ebrasha/abdal-proxy-hub/refs/heads/main/socks4-proxy-list-by-EbraSha.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ebrasha/abdal-proxy-hub/refs/heads/main/socks5-proxy-list-by-EbraSha.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/themiralay/Proxy-List-World/refs/heads/master/data.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://api.openproxylist.xyz/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http",
+    "type": "http"
+  },
+  {
+    "url": "https://api.proxyscrape.com/v2/?request=getproxies&protocol=https",
+    "type": "http"
+  },
+  {
+    "url": "https://openproxy.space/list/http",
+    "type": "http"
+  },
+  {
+    "url": "https://proxyspace.pro/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://proxyspace.pro/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/AlestackOverglow/proxy-list/refs/heads/main/proxies_with_protocol.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ALIILAPRO/Proxy/refs/heads/main/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/andigwandi/free-proxy/refs/heads/main/proxy_list.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Anonym0usWork1221/Free-Proxies/refs/heads/main/proxy_files/http_proxies.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Anonym0usWork1221/Free-Proxies/refs/heads/main/proxy_files/https_proxies.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/aslisk/proxyhttps/refs/heads/main/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/dinoz0rg/proxy-list/refs/heads/main/checked_proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/dpangestuw/Free-Proxy/refs/heads/main/http_proxies.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/elliottophellia/proxylist/refs/heads/master/results/http/global/http_checked.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ErcinDedeoglu/proxies/refs/heads/main/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ErcinDedeoglu/proxies/refs/heads/main/proxies/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/hendrikbgr/Free-Proxy-Repo/refs/heads/master/proxy_list.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/mmpx12/proxy-list/refs/heads/master/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/mmpx12/proxy-list/refs/heads/master/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/MrMarble/proxy-list/refs/heads/main/all.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/MuRongPIG/Proxy-Master/refs/heads/main/http_checked.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Noctiro/getproxy/refs/heads/master/file/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Noctiro/getproxy/refs/heads/master/file/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/officialputuid/KangProxy/refs/heads/KangProxy/http/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/officialputuid/KangProxy/refs/heads/KangProxy/https/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/r00tee/Proxy-List/refs/heads/main/Https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/roosterkid/openproxylist/refs/heads/main/HTTPS_RAW.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/saisuiu/Lionkings-Http-Proxys-Proxies/refs/heads/main/free.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/SevenworksDev/proxy-list/refs/heads/main/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/SevenworksDev/proxy-list/refs/heads/main/proxies/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Skiddle-ID/proxylist/refs/heads/main/proxies.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/SoliSpirit/proxy-list/refs/heads/main/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/SoliSpirit/proxy-list/refs/heads/main/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/sunny9577/proxy-scraper/refs/heads/master/generated/http_proxies.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/themiralay/Proxy-List-World/refs/heads/master/data.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/refs/heads/master/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Tsprnay/Proxy-lists/refs/heads/master/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Tsprnay/Proxy-lists/refs/heads/master/proxies/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/tuanminpay/live-proxy/refs/heads/master/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/vakhov/fresh-proxy-list/refs/heads/master/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/vakhov/fresh-proxy-list/refs/heads/master/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Vann-Dev/proxy-list/refs/heads/main/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Vann-Dev/proxy-list/refs/heads/main/proxies/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/vmheaven/VMHeaven-Free-Proxy-Updated/refs/heads/main/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/vmheaven/VMHeaven-Free-Proxy-Updated/refs/heads/main/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/yemixzy/proxy-list/refs/heads/main/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Zaeem20/FREE_PROXIES_LIST/refs/heads/master/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Zaeem20/FREE_PROXIES_LIST/refs/heads/master/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/zevtyardt/proxy-list/refs/heads/main/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/zloi-user/hideip.me/refs/heads/master/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/zloi-user/hideip.me/refs/heads/master/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ZoniBoy00/proxy-lists/refs/heads/master/http_proxies.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://www.proxy-list.download/api/v1/get?type=http",
+    "type": "http"
+  },
+  {
+    "url": "https://www.proxy-list.download/api/v1/get?type=https",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/clarketm/proxy-list/master/proxy-list-raw.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/proxy4parsing/proxy-list/main/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://api.proxyscrape.com/v2/?request=getproxies&protocol=http",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ProxyScraper/ProxyScraper/main/http_proxies.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://api.openproxylist.xyz/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/mmpx12/proxy-list/master/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/rosemarycai/proxy-list/main/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/zevtyardt/proxy-list/main/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/officialputuid/kang-dmz/main/http/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Zaeem20/FREE_PROXIES_LIST/master/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/a2u/free-proxy-list/master/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/UserR3X/Proxy-List/main/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/mertguvencc/http-proxy-list/main/proxy-list/data.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/manuGMG/proxy-list/main/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/MrAkain/Free-Proxy-List/main/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/EliasKaleel/Proxy-List/main/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/andig/free-proxy-list/main/proxy.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/prxchk/proxy-list/main/proxy-list.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/HyperBeats/Proxy-List/main/proxy-list.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Volkov97/Proxy-List/main/Proxy.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/zevtyardt/proxy-list/main/all.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/zevtyardt/proxy-list/main/raw.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Tsprnay/Proxy-lists/refs/heads/master/proxies/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Tsprnay/Proxy-lists/refs/heads/master/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/SoliSpirit/proxy-list/refs/heads/main/https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Tsprnay/Proxy-lists/refs/heads/master/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/SoliSpirit/proxy-list/refs/heads/main/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Tsprnay/Proxy-lists/refs/heads/master/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ErcinDedeoglu/proxies/refs/heads/main/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/r00tee/Proxy-List/refs/heads/main/Https.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/r00tee/Proxy-List/refs/heads/main/Http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://www.proxy-list.download/api/v1/get?type=socks4",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/proxy4parsing/proxy-list/main/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks4",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ProxyScraper/ProxyScraper/main/socks4_proxies.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://api.openproxylist.xyz/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/mmpx12/proxy-list/master/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/rosemarycai/proxy-list/main/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/zevtyardt/proxy-list/main/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Zaeem20/FREE_PROXIES_LIST/master/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/a2u/free-proxy-list/master/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/UserR3X/Proxy-List/main/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/mertguvencc/socks4-proxy-list/main/proxy-list/data.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/manuGMG/proxy-list/main/proxies/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/EliasKaleel/Proxy-List/main/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/UptoboxTeam/ProxyList/master/proxies.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/tuanminpay/live-proxy/refs/heads/master/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Tsprnay/Proxy-lists/refs/heads/master/proxies/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/SevenworksDev/proxy-list/refs/heads/main/proxies/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/SoliSpirit/proxy-list/refs/heads/main/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ErcinDedeoglu/proxies/refs/heads/main/proxies/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/tuanminpay/live-proxy/refs/heads/master/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://openproxy.space/list/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://www.proxy-list.download/api/v1/get?type=socks5",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/TheSpeedX/PROXY-List/master/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ShiftyTR/Proxy-List/master/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/monosans/proxy-list/main/proxies/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/proxy4parsing/proxy-list/main/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://api.proxyscrape.com/v2/?request=getproxies&protocol=socks5",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/ProxyScraper/ProxyScraper/main/socks5_proxies.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://api.openproxylist.xyz/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/jetkai/proxy-list/main/online-proxies/txt/proxies-socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/mmpx12/proxy-list/master/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/rosemarycai/proxy-list/main/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/zevtyardt/proxy-list/main/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/Zaeem20/FREE_PROXIES_LIST/master/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/a2u/free-proxy-list/master/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/UserR3X/Proxy-List/main/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/mertguvencc/socks5-proxy-list/main/proxy-list/data.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/manuGMG/proxy-list/main/proxies/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/hookzof/socks5_list/master/proxy.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/BkhpZ/Proxy-List/main/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/EliasKaleel/Proxy-List/main/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/casa-ls/proxy-list/refs/heads/main/socks4",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/casa-ls/proxy-list/refs/heads/main/socks5",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/casa-ls/proxy-list/refs/heads/main/http",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/BreakingTechFr/Proxy_Free/refs/heads/main/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/BreakingTechFr/Proxy_Free/refs/heads/main/proxies/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/BreakingTechFr/Proxy_Free/refs/heads/main/proxies/socks5.txt",
+    "type": "socks5"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/KrishArul26/Proxy_List/refs/heads/main/valid_proxies.txt",
+    "type": "0"
+  }
+]
