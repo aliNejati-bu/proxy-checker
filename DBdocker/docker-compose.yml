@@ -7,5 +7,12 @@ services:
     volumes:
       - mongo-data:/data/db
     command: [ "/bin/sh", "-c", "rm -f /data/db/mongod.lock && mongod --bind_ip_all" ]
+    networks:
+      - shared-net
+
 volumes:
   mongo-data:
+
+networks:
+  shared-net:
+    name: shared-net

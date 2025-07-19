@@ -13,7 +13,12 @@ services:
       - TEST_CONCURRENCY=25
     depends_on:
       - mongo
-
   mongo:
     external: true
     name: my-mongo
+    networks:
+      - shared-net
+
+networks:
+  shared-net:
+    external: true
