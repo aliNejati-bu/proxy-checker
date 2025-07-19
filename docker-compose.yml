@@ -13,11 +13,10 @@ services:
       - TEST_CONCURRENCY=25
     depends_on:
       - mongo
-  mongo:
-    external: true
-    name: my-mongo
     networks:
       - shared-net
+
+# ❌ حذف کامل سرویس mongo (چون به صورت جدا اجرا میشه)
 
 networks:
   shared-net:
