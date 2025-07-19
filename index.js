@@ -64,7 +64,7 @@ mongoose.connect(process.env.MONGO_URI).then(async () => {
     }
     if (process.argv[2] === "testAll") {
         while (true) {
-            const proxies = await getConfigsToTest(100);
+            const proxies = await getConfigsToTest(500);
             await testProxies(proxies);
         }
     }
