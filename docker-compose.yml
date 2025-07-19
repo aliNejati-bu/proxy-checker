@@ -2,7 +2,7 @@ version: '3.8'
 services:
   app:
     build: .
-    container_name: my-node-app
+    container_name: node-js-proxy
     ports:
       - "3002:3001"
     restart: unless-stopped
