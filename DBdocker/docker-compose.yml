@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  mongo:
+    image: mongo:4.4
+    container_name: my-mongo
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    command: [ "/bin/sh", "-c", "rm -f /data/db/mongod.lock && mongod --bind_ip_all" ]
+volumes:
+  mongo-data:

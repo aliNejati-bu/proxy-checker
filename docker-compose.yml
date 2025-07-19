@@ -8,19 +8,12 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - MONGO_URI=mongodb://localhost:27017/proxy
+      - MONGO_URI=mongodb://mongo:27017/proxy
       - IS_NEW=false
       - TEST_CONCURRENCY=25
     depends_on:
       - mongo
+
   mongo:
-    image: mongo:4.4
-    container_name: my-mongo
-    restart: unless-stopped
-    #   ports:
-    #      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-    command: [ "/bin/sh", "-c", "rm -f /data/db/mongod.lock && mongod --bind_ip_all" ]
-volumes:
-  mongo-data:
+    external: true
+    name: my-mongo
