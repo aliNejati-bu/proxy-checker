@@ -77,6 +77,13 @@ mongoose.connect(process.env.MONGO_URI).then(async () => {
             }
         })
     }
+
+    if (process.argv[2] === "tries") {
+        const count = await ProxyModel.countDocuments({
+            tries: process.argv[3],
+        });
+        logger(count);
+    }
 });
 
 
