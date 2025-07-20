@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "panel": "node panel/server.js"
+    "start": "node admin-panel/server.js"
   },
   "private": true,
   "dependencies": {

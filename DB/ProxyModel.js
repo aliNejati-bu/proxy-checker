@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
     ip: {
         type: String,
         required: true,
+        unique: true
     },
     port: {
         type: String,
