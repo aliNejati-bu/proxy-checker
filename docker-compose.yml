@@ -11,6 +11,7 @@ services:
       - MONGO_URI=mongodb://mongo:27017/proxy
       - IS_NEW=false
       - TEST_CONCURRENCY=25
+      - PORT=3001
     networks:
       - shared-net
 
