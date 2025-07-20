@@ -100,6 +100,7 @@ async function saveProxyToDB(proxyAddress) {
         //logger(`✅ َAdded: ${proxyAddress}`);
         return true;
     } catch (err) {
+        console.log(proxyAddress)
         return false;
     }
 }

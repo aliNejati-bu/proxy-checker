@@ -8,7 +8,7 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - MONGO_URI=mongodb://mongo:27017/proxy
+      - MONGO_URI=mongodb://mongo:27017/prx
       - IS_NEW=false
       - TEST_CONCURRENCY=25
       - PORT=3001

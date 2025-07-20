@@ -7,8 +7,7 @@ const userSchema = new mongoose.Schema({
     },
     ip: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     port: {
         type: String,
