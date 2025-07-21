@@ -1,6 +1,8 @@
 const { request } = require('undici');
 const { CookieJar } = require('tough-cookie');
 const {ProxyAgent} = require('proxy-agent');
+const mongoose = require("mongoose");
+const {ProxyModel} = require("./DB/ProxyModel");
 
 class Api {
     static real_views = 0;
