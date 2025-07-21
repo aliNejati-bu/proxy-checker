@@ -1,12 +1,29 @@
 [
   {
+    "url": "https://raw.githubusercontent.com/FifzzSENZE/Master-Proxy/refs/heads/master/proxies/http.txt",
+    "type": "http"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/FifzzSENZE/Master-Proxy/refs/heads/master/proxies/https.txt",
+    "type": "https"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/FifzzSENZE/Master-Proxy/refs/heads/master/proxies/socks4.txt",
+    "type": "socks4"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/FifzzSENZE/Master-Proxy/refs/heads/master/proxies/socks5.txt",
+    "type": "socks5"
+  },
+  {
     "url": "https://raw.githubusercontent.com/claude89757/free_https_proxies/refs/heads/main/isz_https_proxies.txt",
     "type": "https"
   },
   {
     "url": "https://raw.githubusercontent.com/variableninja/proxyscraper/refs/heads/main/proxies/http.txt",
     "type": "http"
-  },{
+  },
+  {
     "url": "https://github.com/variableninja/proxyscraper/blob/main/proxies/socks.txt",
     "type": "socks5"
   },
