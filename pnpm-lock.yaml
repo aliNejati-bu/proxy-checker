@@ -11,6 +11,9 @@ importers:
       axios:
         specifier: ^1.10.0
         version: 1.10.0
+      axios-cookiejar-support:
+        specifier: ^6.0.4
+        version: 6.0.4(axios@1.10.0)(tough-cookie@5.1.2)
       body-parser:
         specifier: ^2.2.0
         version: 2.2.0
@@ -41,6 +44,9 @@ importers:
       socks-proxy-agent:
         specifier: ^8.0.5
         version: 8.0.5
+      tough-cookie:
+        specifier: ^5.1.2
+        version: 5.1.2
 
 packages:
 
@@ -79,6 +85,13 @@ packages:
 
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
+
+  axios-cookiejar-support@6.0.4:
+    resolution: {integrity: sha512-4Bzj+l63eGwnWDBFdJHeGS6Ij3ytpyqvo//ocsb5kCLN/rKthzk27Afh2iSkZtuudOBkHUWWIcyCb4GKhXqovQ==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      axios: '>=0.20.0'
+      tough-cookie: '>=4.0.0'
 
   axios@1.10.0:
     resolution: {integrity: sha512-/1xYAC4MP/HEG+3duIhFr4ZQXR4sQXOIe+o6sdqzeykGLx6Upp/1p8MHqhINOvGeP7xyNHe7tsiJByc4SSVUxw==}
@@ -292,6 +305,16 @@ packages:
   hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
+
+  http-cookie-agent@7.0.2:
+    resolution: {integrity: sha512-aHaES6SOFtnSlmWu0yEaaQvu+QexUG2gscSAvMhJ7auzW8r/jYOgGrzuAm9G9nHbksuhz7Lw4zOwDHmfQaxZvw==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      tough-cookie: ^4.0.0 || ^5.0.0
+      undici: ^7.0.0
+    peerDependenciesMeta:
+      undici:
+        optional: true
 
   http-errors@2.0.0:
     resolution: {integrity: sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==}
@@ -557,9 +580,20 @@ packages:
     resolution: {integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==}
     engines: {node: '>=8'}
 
+  tldts-core@6.1.86:
+    resolution: {integrity: sha512-Je6p7pkk+KMzMv2XXKmAE3McmolOQFdxkKw0R8EYNr7sELW46JqnNeTX8ybPiQgvg1ymCoF8LXs5fzFaZvJPTA==}
+
+  tldts@6.1.86:
+    resolution: {integrity: sha512-WMi/OQ2axVTf/ykqCQgXiIct+mSQDFdH2fkwhPwgEwvJ1kSzZRiinb0zF2Xb8u4+OqPChmyI6MEu4EezNJz+FQ==}
+    hasBin: true
+
   toidentifier@1.0.1:
     resolution: {integrity: sha512-o5sSPKEkg/DIQNmH43V0/uerLrpzVedkUh8tGNvaeXpfpuwjKenlSox/2O/BTlZUtEe+JG7s5YhEz608PlAHRA==}
     engines: {node: '>=0.6'}
+
+  tough-cookie@5.1.2:
+    resolution: {integrity: sha512-FVDYdxtnj0G6Qm/DhNPSb8Ju59ULcup3tuJxkFb5K8Bv2pUXILbf0xZWU8PX8Ov19OXljbUyveOFwRMwkXzO+A==}
+    engines: {node: '>=16'}
 
   tr46@5.1.1:
     resolution: {integrity: sha512-hdF5ZgjTqgAntKkklYw0R03MG2x/bSzTtkxmIRw/sTNV8YXsCJ1tfLAX23lhxhHJlEf3CRCOCGGWw3vI3GaSPw==}
@@ -642,6 +676,14 @@ snapshots:
   array-flatten@1.1.1: {}
 
   asynckit@0.4.0: {}
+
+  axios-cookiejar-support@6.0.4(axios@1.10.0)(tough-cookie@5.1.2):
+    dependencies:
+      axios: 1.10.0
+      http-cookie-agent: 7.0.2(tough-cookie@5.1.2)
+      tough-cookie: 5.1.2
+    transitivePeerDependencies:
+      - undici
 
   axios@1.10.0:
     dependencies:
@@ -889,6 +931,11 @@ snapshots:
   hasown@2.0.2:
     dependencies:
       function-bind: 1.1.2
+
+  http-cookie-agent@7.0.2(tough-cookie@5.1.2):
+    dependencies:
+      agent-base: 7.1.4
+      tough-cookie: 5.1.2
 
   http-errors@2.0.0:
     dependencies:
@@ -1178,7 +1225,17 @@ snapshots:
     dependencies:
       ansi-regex: 5.0.1
 
+  tldts-core@6.1.86: {}
+
+  tldts@6.1.86:
+    dependencies:
+      tldts-core: 6.1.86
+
   toidentifier@1.0.1: {}
+
+  tough-cookie@5.1.2:
+    dependencies:
+      tldts: 6.1.86
 
   tr46@5.1.1:
     dependencies:
