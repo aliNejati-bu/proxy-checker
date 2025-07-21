@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const {logger} = require("./utils/logger");
-const {prepareSrc, saveProxyToDB, testProxy, getConfigsToTest} = require("./ProxyLogic");
+const {prepareSrc, saveProxyToDB, testProxy, getConfigsToTest, getConfigsToTestByUpdateTime} = require("./ProxyLogic");
 const cliProgress = require("cli-progress");
 const {ProxyModel} = require("./DB/ProxyModel");
 require('dotenv').config();
@@ -84,6 +84,14 @@ mongoose.connect(process.env.MONGO_URI).then(async () => {
         });
         logger(count);
     }
+
+    if (process.argv[2] === "testConnected") {
+        while (true) {
+            const proxies = await getConfigsToTestByUpdateTime(500);
+            await testConnectedProxies(proxies);
+        }
+    }
+
 });
 
 
@@ -141,6 +149,71 @@ async function testProxies(proxies) {
                 $set: {
                     lastUpdatedAt: new Date(),
                     tries: proxy.tries + 1,
+                },
+                $push: {
+                    history: {
+                        status: false
+                    }
+                }
+            });
+
+            return {success: false, uri: proxy.uri, error: error.message};
+        }
+    }));
+}
+
+
+async function testConnectedProxies(proxies) {
+    logger("Start Testing...");
+    return Promise.all(proxies.map(async (proxy) => {
+        try {
+            if (proxy.tries < -1) {
+                proxy.tries = -1;
+            }
+            // تست کانفیگ
+            //let st = Date.now();
+            const testResult = await testProxy(proxy.type, proxy.ip, proxy.port);
+            //logger(Date.now() - st);
+
+            // اگر کانفیگ متصل شد، connectionStatus را true می‌کنیم و lastModifiedAt را آپدیت می‌کنیم
+            if (testResult) {
+                await ProxyModel.findByIdAndUpdate(proxy._id, {
+                    $set: {
+                        isConnected: true,
+                        lastUpdatedAt: new Date(),
+                    },
+                    $push: {
+                        history: {
+                            status: true
+                        }
+                    }
+                });
+            } else {
+                logger("Fail")
+                // اگر متصل نشد، فقط تاریخ آخرین تغییرات را آپدیت می‌کنیم
+                await ProxyModel.findByIdAndUpdate(proxy._id, {
+                    $set: {
+                        lastUpdatedAt: new Date(),
+                        isConnected: false,
+                        tries: -1,
+                    },
+                    $push: {
+                        history: {
+                            status: false
+                        }
+                    }
+                });
+            }
+
+            return {success: testResult.success, uri: proxy.uri, status: testResult.status};
+        } catch (error) {
+            logger("Fail")
+            // در صورتی که خطا داشته باشیم، کانفیگ را به روز رسانی میکنیم و خطا را ذخیره میکنیم
+            await ProxyModel.findByIdAndUpdate(proxy._id, {
+                $set: {
+                    lastUpdatedAt: new Date(),
+                    isConnected: false,
+                    tries: -1,
                 },
                 $push: {
                     history: {

@@ -105,7 +105,7 @@ async function saveProxyToDB(proxyAddress) {
 }
 
 
-function getConfigsToTest(limit = 100) {
+function getConfigsToTest(limit = 100, isConnect = false) {
     const sortEnv = process.env.IS_NEW;
     let newVal = 1;
     if (sortEnv == 'true') {
@@ -116,11 +116,22 @@ function getConfigsToTest(limit = 100) {
         createdAt: newVal     // در صورت برابر بودن، اولویت با قدیمی‌ترها
     })
     return ProxyModel.find({
-        isConnected: false,
+        isConnected: isConnect,
     })
         .sort({
             tries: 1,        // اولویت با tries کمتر
             createdAt: newVal     // در صورت برابر بودن، اولویت با قدیمی‌ترها
+        })
+        .limit(limit);
+}
+
+function getConfigsToTestByUpdateTime(limit = 100, isConnect = false) {
+    return ProxyModel.find({
+        isConnected: isConnect,
+    })
+        .sort({
+            tries: 1,
+            lastUpdatedAt: 1
         })
         .limit(limit);
 }
@@ -130,3 +141,4 @@ module.exports.prepareSrc = prepareSrc;
 module.exports.testProxy = testProxy;
 module.exports.saveProxyToDB = saveProxyToDB;
 module.exports.getConfigsToTest = getConfigsToTest;
+module.exports.getConfigsToTestByUpdateTime = getConfigsToTestByUpdateTime;
