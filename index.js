@@ -164,7 +164,7 @@ async function testProxies(proxies) {
 
 
 async function testConnectedProxies(proxies) {
-    logger("Start Testing...");
+    logger("----------------------------- Start Testing... -----------------------------");
     return Promise.all(proxies.map(async (proxy) => {
         try {
             if (proxy.tries < -1) {
