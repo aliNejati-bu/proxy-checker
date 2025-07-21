@@ -2,8 +2,8 @@ const axios = require('axios');
 const {CookieJar} = require('tough-cookie');
 const {wrapper} = require('axios-cookiejar-support');
 const {SocksProxyAgent} = require('socks-proxy-agent');
-const HttpProxyAgent = require('http-proxy-agent');
-const HttpsProxyAgent = require('https-proxy-agent');
+const {HttpProxyAgent} = require('http-proxy-agent');
+const {HttpsProxyAgent} = require('https-proxy-agent');
 const https = require('https');
 const mongoose = require("mongoose");
 const {ProxyModel} = require("./DB/ProxyModel");
@@ -85,6 +85,7 @@ class Api {
             });
 
         } catch (err) {
+            console.log(err.message)
             Api.proxy_errors++;
         }
     }
