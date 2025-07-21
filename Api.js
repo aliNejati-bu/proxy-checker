@@ -1,5 +1,5 @@
-const { request } = require('undici');
-const { CookieJar } = require('tough-cookie');
+const {request} = require('undici');
+const {CookieJar} = require('tough-cookie');
 const {ProxyAgent} = require('proxy-agent');
 const mongoose = require("mongoose");
 const {ProxyModel} = require("./DB/ProxyModel");
@@ -50,7 +50,7 @@ class Api {
             // Step 2: Send view trigger request
             await request('https://t.me/v/', {
                 method: 'GET',
-                query: { views: viewToken },
+                query: {views: viewToken},
                 headers: {
                     'referer': postUrl,
                     'x-requested-with': 'XMLHttpRequest',
@@ -62,7 +62,7 @@ class Api {
 
         } catch (err) {
             Api.proxy_errors++;
-            // console.error('Proxy error:', err.message);
+            console.error('Proxy error:', err.message);
         }
     }
 
