@@ -84,6 +84,53 @@ app.get('/api/stats', async (req, res) => {
     }
 });
 
+app.get('/prx/http', async function (req, res) {
+    const proxies = await ProxyModel.find({
+        isConnected: true,
+        type: 'http'
+    });
+    let r = '';
+    for (const proxy of proxies) {
+        r += `${proxy.ip}:${proxy.port}\n`
+    }
+    res.send(r);
+});
+
+app.get('/prx/https', async function (req, res) {
+    const proxies = await ProxyModel.find({
+        isConnected: true,
+        type: 'https'
+    });
+    let r = '';
+    for (const proxy of proxies) {
+        r += `${proxy.ip}:${proxy.port}\n`
+    }
+    res.send(r);
+});
+
+app.get('/prx/socks4', async function (req, res) {
+    const proxies = await ProxyModel.find({
+        isConnected: true,
+        type: 'socks4'
+    });
+    let r = '';
+    for (const proxy of proxies) {
+        r += `${proxy.ip}:${proxy.port}\n`
+    }
+    res.send(r);
+});
+app.get('/prx/socks5', async function (req, res) {
+    const proxies = await ProxyModel.find({
+        isConnected: true,
+        type: 'socks4'
+    });
+    let r = '';
+    for (const proxy of proxies) {
+        r += `${proxy.ip}:${proxy.port}\n`
+    }
+    res.send(r);
+});
+
 // WebSocket: ارسال آمار و لیست دستورات و سیستم هر 5 ثانیه
 setInterval(async () => {
     try {
