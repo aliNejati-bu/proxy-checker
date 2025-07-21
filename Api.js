@@ -62,7 +62,7 @@ class Api {
 
         } catch (err) {
             Api.proxy_errors++;
-            console.error('Proxy error:', err.message);
+            console.error('Proxy error:', err);
         }
     }
 
