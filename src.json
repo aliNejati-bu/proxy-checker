@@ -4,6 +4,13 @@
     "type": "https"
   },
   {
+    "url": "https://raw.githubusercontent.com/variableninja/proxyscraper/refs/heads/main/proxies/http.txt",
+    "type": "http"
+  },{
+    "url": "https://github.com/variableninja/proxyscraper/blob/main/proxies/socks.txt",
+    "type": "socks5"
+  },
+  {
     "url": "https://raw.githubusercontent.com/databay-labs/free-proxy-list/refs/heads/master/socks5.txt",
     "type": "socks5"
   },
