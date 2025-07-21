@@ -78,10 +78,11 @@ class Api {
                 timeout: {request: 15000},
                 https: {rejectUnauthorized: false}
             });
+            console.log("Succsses")
 
         } catch (err) {
             Api.proxy_errors++;
-            console.error('Proxy Error:', err);
+            console.log("Error")
         }
     }
 
