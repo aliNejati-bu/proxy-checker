@@ -1,12 +1,6 @@
-const axios = require('axios');
-const {CookieJar} = require('tough-cookie');
-const {wrapper} = require('axios-cookiejar-support');
-const {SocksProxyAgent} = require('socks-proxy-agent');
-const {HttpProxyAgent} = require('http-proxy-agent');
-const {HttpsProxyAgent} = require('https-proxy-agent');
-const https = require('https');
-const mongoose = require("mongoose");
-const {ProxyModel} = require("./DB/ProxyModel");
+const { request } = require('undici');
+const { CookieJar } = require('tough-cookie');
+const {ProxyAgent} = require('proxy-agent');
 
 class Api {
     static real_views = 0;
@@ -19,92 +13,75 @@ class Api {
         this.post = post;
     }
 
-    getAgent(proxy, proxyType) {
-        const proxyUrl = `${proxyType.toLowerCase()}://${proxy}`;
-
-        switch (proxyType.toLowerCase()) {
-            case 'http':
-                return new HttpProxyAgent(proxyUrl);
-            case 'https':
-                const baseAgent = new HttpsProxyAgent(proxyUrl);
-                baseAgent.options.rejectUnauthorized = false; // حذف چک SSL
-                return baseAgent;
-            case 'socks4':
-                return new SocksProxyAgent(`socks4://${proxy}`);
-            case 'socks5':
-                return new SocksProxyAgent(`socks5://${proxy}`);
-            default:
-                return null;
-        }
+    getProxyAgent(proxy, proxyType) {
+        const proxyUrl = `${proxyType}://${proxy}`;
+        return new ProxyAgent(proxyUrl);
     }
 
     async sendView(proxy, proxyType) {
+        const agent = this.getProxyAgent(proxy, proxyType);
         const jar = new CookieJar();
-        const agent = this.getAgent(proxy, proxyType);
-
-        const client = wrapper(axios.create({
-            jar,
-            httpAgent: agent,
-            httpsAgent: agent,
-            timeout: 15000,
-            headers: {
-                'referer': `${this.url}${this.channel}/${this.post}`,
-                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36'
-            }
-        }));
 
         try {
-            const response = await client.get(`${this.url}${this.channel}/${this.post}`, {
-                params: {embed: '1', mode: 'tme'}
+            const postUrl = `${this.url}${this.channel}/${this.post}?embed=1&mode=tme`;
+
+            // Step 1: Load page and get view token
+            const res1 = await request(postUrl, {
+                method: 'GET',
+                headers: {
+                    'referer': postUrl,
+                    'user-agent': 'Mozilla/5.0'
+                },
+                dispatcher: agent,
+                cookieJar: jar
             });
 
-            const viewTokenMatch = response.data.match(/data-view="([^"]+)"/);
-            if (!viewTokenMatch) {
+            const bodyText = await res1.body.text();
+            const match = bodyText.match(/data-view="([^"]+)"/);
+            if (!match) {
                 Api.token_errors++;
                 return;
             }
 
-            const viewToken = viewTokenMatch[1];
-            const cookieMap = await jar.getCookies('https://t.me');
-            const cookieObj = Object.fromEntries(cookieMap.map(c => [c.key, c.value]));
+            const viewToken = match[1];
 
-            await client.get('https://t.me/v/', {
-                params: {views: viewToken},
+            // Step 2: Send view trigger request
+            await request('https://t.me/v/', {
+                method: 'GET',
+                query: { views: viewToken },
                 headers: {
-                    'referer': `https://t.me/${this.channel}/${this.post}?embed=1&mode=tme`,
-                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36',
-                    'x-requested-with': 'XMLHttpRequest'
+                    'referer': postUrl,
+                    'x-requested-with': 'XMLHttpRequest',
+                    'user-agent': 'Mozilla/5.0'
                 },
-                withCredentials: true,
-                headersCookie: {
-                    'stel_dt': '-240',
-                    'stel_web_auth': 'https%3A%2F%2Fweb.telegram.org%2Fz%2F',
-                    'stel_ssid': cookieObj.stel_ssid || '',
-                    'stel_on': cookieObj.stel_on || ''
-                }
+                dispatcher: agent,
+                cookieJar: jar
             });
 
         } catch (err) {
-            console.log(err.message)
             Api.proxy_errors++;
+            // console.error('Proxy error:', err.message);
         }
     }
 
     static async views(channel, post) {
         try {
-            const response = await axios.get(`https://t.me/${channel}/${post}`, {
-                params: {embed: '1', mode: 'tme'},
+            const res = await request(`https://t.me/${channel}/${post}?embed=1&mode=tme`, {
+                method: 'GET',
                 headers: {
                     'referer': `https://t.me/${channel}/${post}`,
-                    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36'
+                    'user-agent': 'Mozilla/5.0'
                 },
-                httpsAgent: new https.Agent({rejectUnauthorized: false}) // حذف چک SSL حتی اینجا
+                dispatcher: new ProxyAgent('direct://') // بدون پراکسی
             });
 
-            const match = response.data.match(/<span class="tgme_widget_message_views">([^<]+)/);
-            if (match) Api.real_views = match[1];
+            const text = await res.body.text();
+            const match = text.match(/<span class="tgme_widget_message_views">([^<]+)/);
+            if (match) {
+                Api.real_views = match[1];
+            }
         } catch (err) {
-            console.error('Error fetching views:', err.message);
+            console.error('Fetch views error:', err.message);
         }
     }
 }

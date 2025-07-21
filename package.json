@@ -18,8 +18,10 @@
     "http-proxy-agent": "^7.0.2",
     "https-proxy-agent": "^7.0.6",
     "mongoose": "^8.16.4",
+    "proxy-agent": "^6.5.0",
     "socket.io": "^4.8.1",
     "socks-proxy-agent": "^8.0.5",
-    "tough-cookie": "^5.1.2"
+    "tough-cookie": "^5.1.2",
+    "undici": "^7.12.0"
   }
 }
