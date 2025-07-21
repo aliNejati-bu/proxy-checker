@@ -112,14 +112,16 @@ mongoose.connect(process.env.MONGO_URI).then(async () => {
     });
     for (const proxy of proxies) {
 
-        const api = new Api('digital550tel', '256'); // مثال: 'somechannel', '123'
-        await Api.views('digital550tel', '256');
-        console.log('Real views:', Api.real_views);
+        (async () => {
+            const api = new Api('digital550tel', '256'); // مثال: 'somechannel', '123'
+            await Api.views('digital550tel', '256');
+            console.log('Real views:', Api.real_views);
 
-        await api.sendView(`${proxy.ip}:${proxy.port}`, proxy.type);
+            await api.sendView(`${proxy.ip}:${proxy.port}`, proxy.type);
 
-        console.log('Token errors:', Api.token_errors);
-        console.log('Proxy errors:', Api.proxy_errors);
+            console.log('Token errors:', Api.token_errors);
+            console.log('Proxy errors:', Api.proxy_errors);
+        })()
     }
 })
 
