@@ -3,6 +3,10 @@ const {CookieJar} = require('tough-cookie');
 const {ProxyAgent} = require('proxy-agent');
 const mongoose = require("mongoose");
 const {ProxyModel} = require("./DB/ProxyModel");
+const {HttpProxyAgent} = require("http-proxy-agent");
+const {HttpsProxyAgent} = require("https-proxy-agent");
+const {SocksProxyAgent} = require("socks-proxy-agent");
+const got = require('got');
 
 class Api {
     static real_views = 0;
@@ -15,31 +19,45 @@ class Api {
         this.post = post;
     }
 
-    getProxyAgent(proxy, proxyType) {
-        const proxyUrl = `${proxyType}://${proxy}`;
-        return new ProxyAgent(proxyUrl);
+    getAgent(proxy, proxyType) {
+        const proxyUrl = `${proxyType.toLowerCase()}://${proxy}`;
+        switch (proxyType.toLowerCase()) {
+            case 'http':
+                return new HttpProxyAgent(proxyUrl);
+            case 'https':
+                const httpsAgent = new HttpsProxyAgent(proxyUrl);
+                httpsAgent.options.rejectUnauthorized = false;
+                return httpsAgent;
+            case 'socks4':
+                return new SocksProxyAgent(`socks4://${proxy}`);
+            case 'socks5':
+                return new SocksProxyAgent(`socks5://${proxy}`);
+            default:
+                return null;
+        }
     }
 
     async sendView(proxy, proxyType) {
-        const agent = this.getProxyAgent(proxy, proxyType);
+        const agent = this.getAgent(proxy, proxyType);
         const jar = new CookieJar();
 
         try {
-            const postUrl = `${this.url}${this.channel}/${this.post}?embed=1&mode=tme`;
+            const postUrl = `${this.url}${this.channel}/${this.post}`;
+            const embedUrl = `${postUrl}?embed=1&mode=tme`;
 
-            // Step 1: Load page and get view token
-            const res1 = await request(postUrl, {
-                method: 'GET',
+            // Step 1: Get view token
+            const res1 = await got(embedUrl, {
+                agent: {http: agent, https: agent},
+                cookieJar: jar,
                 headers: {
                     'referer': postUrl,
                     'user-agent': 'Mozilla/5.0'
                 },
-                dispatcher: agent,
-                cookieJar: jar
+                timeout: {request: 15000},
+                https: {rejectUnauthorized: false}
             });
 
-            const bodyText = await res1.body.text();
-            const match = bodyText.match(/data-view="([^"]+)"/);
+            const match = res1.body.match(/data-view="([^"]+)"/);
             if (!match) {
                 Api.token_errors++;
                 return;
@@ -47,43 +65,43 @@ class Api {
 
             const viewToken = match[1];
 
-            // Step 2: Send view trigger request
-            await request('https://t.me/v/', {
-                method: 'GET',
-                query: {views: viewToken},
+            // Step 2: Send "view" request
+            await got('https://t.me/v/', {
+                searchParams: {views: viewToken},
+                agent: {http: agent, https: agent},
+                cookieJar: jar,
                 headers: {
-                    'referer': postUrl,
-                    'x-requested-with': 'XMLHttpRequest',
-                    'user-agent': 'Mozilla/5.0'
+                    'referer': embedUrl,
+                    'user-agent': 'Mozilla/5.0',
+                    'x-requested-with': 'XMLHttpRequest'
                 },
-                dispatcher: agent,
-                cookieJar: jar
+                timeout: {request: 15000},
+                https: {rejectUnauthorized: false}
             });
 
         } catch (err) {
             Api.proxy_errors++;
-            console.error('Proxy error:', err);
+            console.error('Proxy Error:', err.message);
         }
     }
 
     static async views(channel, post) {
         try {
-            const res = await request(`https://t.me/${channel}/${post}?embed=1&mode=tme`, {
-                method: 'GET',
+            const res = await got(`https://t.me/${channel}/${post}`, {
+                searchParams: {embed: '1', mode: 'tme'},
                 headers: {
                     'referer': `https://t.me/${channel}/${post}`,
                     'user-agent': 'Mozilla/5.0'
                 },
-                dispatcher: new ProxyAgent('direct://') // بدون پراکسی
+                https: {rejectUnauthorized: false}
             });
 
-            const text = await res.body.text();
-            const match = text.match(/<span class="tgme_widget_message_views">([^<]+)/);
+            const match = res.body.match(/<span class="tgme_widget_message_views">([^<]+)/);
             if (match) {
                 Api.real_views = match[1];
             }
         } catch (err) {
-            console.error('Fetch views error:', err.message);
+            console.error('View count fetch failed:', err.message);
         }
     }
 }
